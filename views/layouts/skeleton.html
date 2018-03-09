@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Snyk - NPM Registry</title>
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            color: #333;
+            font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+        header h1,
+        main {
+            margin: 0 auto;
+            max-width: 64rem;
+            padding: 0 1rem;
+        }
+        header {
+            background-color: purple;
+            padding: 0.5rem 0;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-variant: diagonal-fractions;
+            padding: 0 1rem;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        .Search-form {
+            border: 1px solid #ccc;
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+        .Search-form label {
+            display: block;
+            font-size: 0.875rem;
+        }
+        .Search-form div {
+            display: grid;
+            grid-template-columns: 2fr 90px;
+            grid-column-gap: 0.5rem;
+        }
+        .Search-formText {
+            display: block;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            width: 100%;
+        }
+        .Search-formSubmit {
+            display: block;
+            background-color: #4285f4;
+            border: none;
+            color: #fff;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+            padding: 0.5rem 0;
+            text-align: center;
+            text-transform: uppercase;
+            width: 100%;
+        }
+        .SearchResults {
+            margin-top: 2rem;
+        }
+        .SearchResults ul {
+            list-style: none;
+        }
+        .SearchResults > ul {
+            padding: 0;
+        }
+        .SearchResults li + li {
+            margin-top: 0.5rem;
+        }
+        .Module {
+            background-color: rgba(200,230,200,0.6);
+            border: 1px solid #afafaf;
+            font-size: 0.875rem;
+            margin: 0.25rem 0;
+            padding: 0.25rem 0.5rem;
+        }
+        .Module strong {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        footer {
+            padding: 1rem 0;
+        }
+    </style>
+
+    <!-- I see you there -->
+</head>
+<body>
+
+    <header class="Banner" role="banner">
+        <h1><a href="/">Super Registry Checker 9000</a></h1>
+    </header>
+
+    <main role="main">
+
+        <div class="Search">
+            <form action="/search" method="POST" class="Search-form">
+                <label for="search">NPM module</label>
+                <div>
+                    <input class="Search-formText" type="text" id="search" name="module" placeholder="e.g. minimatch">
+                    <input class="Search-formSubmit" type="submit" name="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+        <div class="SearchResults">
+            {{ content }}
+        </div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="assets/js/db.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/serviceworker.js');
+        });
+    }
+    </script>
+
+</body>
+</html>
